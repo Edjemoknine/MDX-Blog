@@ -1,7 +1,9 @@
 import { defineCollection, defineConfig, s } from "velite";
 
-// `s` is extended from Zod with some custom schemas,
-// you can also import re-exported `z` from `velite` if you don't need these extension schemas.
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import theme from "tailwindcss/defaultTheme";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -38,7 +40,21 @@ export default defineConfig({
     posts,
   },
   mdx: {
-    rehypePlugins: [],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypePrettyCode, { theme: "github-dark" }],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
+
     remarkPlugins: [],
   },
 });
