@@ -1,4 +1,5 @@
 import { posts } from "#site/content";
+import BlogItem from "@/components/BlogItem";
 
 const Blogs = () => {
   const displayBlogs = posts;
@@ -16,9 +17,11 @@ const Blogs = () => {
       <hr className="mt-8" />
       {displayBlogs.length > 0 ? (
         displayBlogs.map((item) => {
-          const { slug } = item;
-
-          return <div key={slug}>Hello</div>;
+          return (
+            <div key={item.slug}>
+              <BlogItem item={item} />
+            </div>
+          );
         })
       ) : (
         <p>Nothing to see here </p>
