@@ -1,8 +1,10 @@
 import { posts } from "#site/content";
 import BlogItem from "@/components/BlogItem";
+import { sortBlog } from "@/util/formate";
 
 const Blogs = () => {
-  const displayBlogs = posts;
+  const publishedBlog = posts.filter((post) => post.published);
+  const displayBlogs = sortBlog(publishedBlog);
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
