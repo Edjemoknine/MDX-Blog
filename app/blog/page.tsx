@@ -30,7 +30,7 @@ const Blogs = ({ searchParams }: BlogProps) => {
       </div>
       <hr className="mt-8" />
       {displayBlogs.length > 0 ? (
-        displayBlogs.map((item) => {
+        displayBlogs.map((item: any) => {
           return (
             <div key={item.slug}>
               <BlogItem item={item} />
