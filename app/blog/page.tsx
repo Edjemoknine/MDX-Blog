@@ -2,8 +2,12 @@ import { posts } from "#site/content";
 import BlogItem from "@/components/BlogItem";
 import PaginationLogic from "@/components/PaginationLogic";
 import { sortBlog } from "@/util/formate";
+import { Metadata } from "next";
 const Blog_Per_Page = 3;
-
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "Tech blog About Next.js and React.js",
+};
 interface BlogProps {
   searchParams: { page?: string };
   className: string;

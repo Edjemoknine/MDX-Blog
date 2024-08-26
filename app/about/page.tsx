@@ -1,6 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "About Me",
+  description:
+    "Frontend developer try demonstrate some tips in Next.js and React.js",
+};
 const About = () => {
   return (
     <div className="container max-w-6xl py-6 lg:py-10">

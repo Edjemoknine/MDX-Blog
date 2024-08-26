@@ -12,6 +12,11 @@ const getPostFromParams = async (params: PostProps["params"]) => {
   return post;
 };
 
+export const generateMetadata = async ({ params }: PostProps) => {
+  const post = await getPostFromParams(params);
+  if (!post) return {};
+  return { title: post.title, description: post.description };
+};
 export async function generateStaticParams(): Promise<PostProps["params"][]> {
   return posts.map((post) => {
     {
