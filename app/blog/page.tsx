@@ -1,10 +1,22 @@
 import { posts } from "#site/content";
 import BlogItem from "@/components/BlogItem";
+import PaginationLogic from "@/components/PaginationLogic";
 import { sortBlog } from "@/util/formate";
+const Blog_Per_Page = 3;
 
-const Blogs = () => {
-  const publishedBlog = posts.filter((post) => post.published);
-  const displayBlogs = sortBlog(publishedBlog);
+interface BlogProps {
+  searchParams: { page?: string };
+  className: string;
+}
+const Blogs = ({ searchParams }: BlogProps) => {
+  const currentPage = Number(searchParams.page) || 1;
+  const totalPages = Math.ceil(posts.length / Blog_Per_Page);
+
+  const publishedBlog = sortBlog(posts.filter((post) => post.published));
+  const displayBlogs = publishedBlog.slice(
+    Blog_Per_Page * (currentPage - 1),
+    Blog_Per_Page * currentPage
+  );
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
@@ -28,6 +40,7 @@ const Blogs = () => {
       ) : (
         <p>Nothing to see here </p>
       )}
+      <PaginationLogic totalPages={totalPages} />
     </div>
   );
 };
