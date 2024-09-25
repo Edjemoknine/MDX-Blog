@@ -8,7 +8,7 @@ interface PostProps {
 
 const getPostFromParams = async (params: PostProps["params"]) => {
   const slug = params?.slug;
-  const post = posts.find((post) => post.slugAsParams === slug);
+  const post = posts.find((post: any) => post.slugAsParams === slug);
   return post;
 };
 
@@ -19,10 +19,8 @@ export const generateMetadata = async ({ params }: PostProps) => {
 };
 export async function generateStaticParams(): Promise<PostProps["params"][]> {
   return posts.map((post) => {
-    {
-      slug: post.slugAsParams.split("/");
-    }
-  });
+    slug: post.slugAsParams.split("/");
+  }) as any;
 }
 
 const BlogDetails = async ({ params }: PostProps) => {

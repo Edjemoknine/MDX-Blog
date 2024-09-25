@@ -25,7 +25,7 @@ const BlogItem = ({ item }: { item: Props }) => {
           <dd className="sr-only">Published On</dd>
           <dd className="text-sm sm:text-base font-medium flex gap-1 items-center">
             <Calendar className="w-4 h-4" />
-            <time datetime={date}>{dateFormate(date)}</time>
+            <time dateTime={date}>{dateFormate(date)}</time>
           </dd>
         </dl>
         <Link

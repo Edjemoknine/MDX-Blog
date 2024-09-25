@@ -7,10 +7,8 @@ export const dateFormate = (input: string) => {
   });
 };
 
-export const sortBlog = (blogs) => {
+export const sortBlog = (blogs: { date: string }[]) => {
   return blogs.sort((a, b) => {
-    if (a.date > b.date) return -1;
-    if (a.date < b.date) return 1;
-    return 0;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 };
