@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Blogs",
   description: "Tech blog About Next.js and React.js",
 };
-interface BlogProps {
-  searchParams: { page?: string };
-  className: string;
-}
-const Blogs = ({ searchParams }: BlogProps) => {
+// interface BlogProps {
+//   searchParams: { page?: string };
+//   className: string;
+// }
+const Blogs = ({ searchParams }: { searchParams: any }) => {
   const currentPage = Number(searchParams.page) || 1;
   const totalPages = Math.ceil(posts.length / Blog_Per_Page);
 
